@@ -51,10 +51,15 @@ jobs:
         name: webpack artifacts
         path: public
     - name: Bild container imag
-      uses: docker/build-push-action@v2
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        username: ${{github.actor}}
-        password: ${{secrets.GUTHUB_TOKEN}}
-        registry: docker.pkg.github.com
-        repository: jacekbro/devops-p8/tictactoe
+        image: devops-p8/tictactoe
+        registry: docker.pkg.github.com/jacekbro
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
         tag_with_sha: true
+        #username: ${{github.actor}}
+        #password: ${{secrets.GUTHUB_TOKEN}}
+        #registry: docker.pkg.github.com
+        #repository: jacekbro/devops-p8/tictactoe
+        #tag_with_sha: true
